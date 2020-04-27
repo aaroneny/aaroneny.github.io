@@ -1,51 +1,24 @@
 ---
 layout: default
 ---
-<div id="main">
-  <article>
-    <header>
-      <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-    </header>
 
-    <section>
-      {{ content }}
-    </section>
+<article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="{{page.date | date: date_to_xmlschema}}" itemprop="datePublished" class="post-meta__date date">{{page.date | date: "%F"}}</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
 
-    <footer>
-      <div class="row">
-      {% if page.previous %}
-        <article class="{% cycle '6u', '6u$' %} 12u(small) excerpt">
-          <header>
-            <h2><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h2>
-          </header>
-          <section>
-            {{ page.previous.excerpt }}
-          </section>
-          <footer>
-            <ul class="actions">
-              <li><a href="{{ page.previous.url }}" class="button">Read More</a></li>
-            </ul>
-          </footer>
-        </article>
-      {% endif %}
+  <section class="post">
+    {{ content }}
 
-      {% if page.next %}
-        <article class="{% cycle '6u', '6u$' %} 12u(small) excerpt f-right">
-          <header>
-            <h2><a href="{{ page.next.url }}">{{ page.next.title }}</a></h2>
-          </header>
-          <section>
-            {{ page.next.excerpt | markdownify }}
-          </section>
-          <footer>
-            <ul class="actions">
-              <li><a href="{{ page.next.url }}" class="button">Read More</a></li>
-            </ul>
-          </footer>
-        </article>
-      {% endif %}
-      </div>
-    </footer>
-  </article>
-</div>
+  </section>
+</article>
+
+{% include new-old.html %}
+{% include comments.html %}

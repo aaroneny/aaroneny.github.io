@@ -1,114 +1,33 @@
-(function($) {
+$(document).ready(function() {
 
-	var settings = {
 
-		// Parallax background effect?
-			parallax: true,
+  $('a.blog-button').click(function() {
+    // If already in blog, return early without animate overlay panel again.
+    if (location.hash && location.hash == "#blog") return;
+    if ($('.panel-cover').hasClass('panel-cover--collapsed')) return;
+    $('.main-post-list').removeClass('hidden');
+    currentWidth = $('.panel-cover').width();
+    if (currentWidth < 2000) {
+      $('.panel-cover').addClass('panel-cover--collapsed');
+    } else {
+      $('.panel-cover').css('max-width',currentWidth);
+      $('.panel-cover').animate({'max-width': '320px', 'width': '22%'}, 400, swing = 'swing', function() {} );
+    }
 
-		// Parallax factor (lower = more intense, higher = less intense).
-			parallaxFactor: 20
+    
+  });
 
-	};
+  if (window.location.hash && window.location.hash == "#blog") {
+    $('.panel-cover').addClass('panel-cover--collapsed');
+    $('.main-post-list').removeClass('hidden');
+  }
 
-	skel.breakpoints({
-		xlarge: '(max-width: 1800px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
-	});
+  if (window.location.pathname.substring(0, 5) == "/tag/") {
+    $('.panel-cover').addClass('panel-cover--collapsed');
+  }
 
-	$(function() {
-
-		var $window = $(window),
-			$body = $('body'),
-			$header = $('#header');
-
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
-
-			$window.on('load', function() {
-				$body.removeClass('is-loading');
-			});
-
-		// Touch?
-			if (skel.vars.mobile) {
-
-				// Turn on touch mode.
-					$body.addClass('is-touch');
-
-				// Height fix (mostly for iOS).
-					window.setTimeout(function() {
-						$window.scrollTop($window.scrollTop() + 1);
-					}, 0);
-
-			}
-
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
-
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
-
-		// Header.
-
-			// Parallax background.
-
-				// Disable parallax on IE (smooth scrolling is jerky), and on mobile platforms (= better performance).
-					if (skel.vars.browser == 'ie'
-					||	skel.vars.mobile)
-						settings.parallax = false;
-
-				if (settings.parallax) {
-
-					skel.on('change', function() {
-
-						if (skel.breakpoint('medium').active) {
-
-							$window.off('scroll.strata_parallax');
-							$header.css('background-position', 'top left, center center');
-
-						}
-						else {
-
-							$header.css('background-position', 'left 0px');
-
-							$window.on('scroll.strata_parallax', function() {
-								$header.css('background-position', 'left ' + (-1 * (parseInt($window.scrollTop()) / settings.parallaxFactor)) + 'px');
-							});
-
-						}
-
-					});
-
-				}
-
-		// Main Sections: Two.
-
-			// Lightbox gallery.
-				$window.on('load', function() {
-
-					$('#two').poptrox({
-						caption: function($a) { return $a.next('h3').text(); },
-						overlayColor: '#2c2c2c',
-						overlayOpacity: 0.85,
-						popupCloserText: '',
-						popupLoaderText: '',
-						selector: '.work-item a.image',
-						usePopupCaption: true,
-						usePopupDefaultStyling: false,
-						usePopupEasyClose: false,
-						usePopupNav: true,
-						windowMargin: (skel.breakpoint('small').active ? 0 : 50)
-					});
-
-				});
-
-	});
-
-})(jQuery);
+  $('.btn-mobile-menu__icon').click(function() {
+    // 导航按钮被点击
+    // this.style.backgroundColor = '#fff'; 设置颜色后会自动消失
+  });  
+});
