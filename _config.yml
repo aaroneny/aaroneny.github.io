@@ -1,20 +1,25 @@
 # Basic
-title: 房恩岳
-subtitle: 个人站
+title: 麦克学术
+subtitle: BioMac
 description: 欢迎来到我的个人站~
+
 # 头像里面的标题
-avatarTitle: leopardpan
+
+avatarTitle: aaroneny
 # 头像里面的描述
-avatarDesc: iOS / 机器学习
+
+avatarDesc: 分享经验 / 助力科研
 url: "http://baixin.io"
 
 # Comment
+
 comment:
     disqus: leopard
     # gitment: xxx // 需要修改 comments.html中的client_id和client_secret
     # uyan: 2143225  # 有言id,登录有言官网申请
 
 # Social
+
 social:
     weibo: 5366874726 
     github: leopardpan
