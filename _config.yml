@@ -21,16 +21,16 @@ comment:
 # Social
 
 social:
-    weibo: 5366874726 
-    github: leopardpan
-    # zhihu: panpanleopard
+    weibo: aaroneny
+    github: aaroneny
+    # zhihu: aaroneny
     # juejin: xxx
 ​    jianshu: 2ada30d8d0f7
     # twitter: 
-​    mail: leopardpan@icloud.com
+​    mail: fangenyue@icloud.com
 
+# 百度统计
 
-# 百度统计 
 # 使用博客模板请去掉或者更换 id 
 baidu:
     id: xxxx  
@@ -46,6 +46,7 @@ ga:
 #
 #
 #  _post/ 下的文章更换成你自己的文章
+
 #  帮忙star一下，感谢~😆 地址： https://github.com/leopardpan/leopardpan.github.io
 #
 #
